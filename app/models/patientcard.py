@@ -12,7 +12,7 @@ class patientCard(db.Model):
     upperbody = db.Column(db.VARCHAR(500), nullable=True)
     lowerbody = db.Column(db.VARCHAR(500), nullable=True)
     comment = db.Column(db.VARCHAR(1000), nullable=True)
-    created_at = db.Column(db.Date, nullable=False)
+
 
     patientCardUser = db.relationship('User', back_populates='userPatientCard')
     patientCardDoctor = db.relationship('Doctor', back_populates='doctorPatientCard')
@@ -25,5 +25,5 @@ class patientCard(db.Model):
             'upperbody': self.upperbody,
             'lowerbody': self.lowerbody,
             'comment': self.comment,
-            'created_at': self.created_at
+
         }

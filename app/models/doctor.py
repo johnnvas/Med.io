@@ -10,7 +10,6 @@ class Doctor(db.Model):
     email = db.Column(db.String(225), unique=True, nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    created_at = db.Column(db.Date, nullable=False)
 
     doctorPatientCard = db.relationship('patientCard', back_populates='patientCardDoctor')
 
@@ -20,5 +19,4 @@ class Doctor(db.Model):
             'firstName': self.firstName,
             'lastName': self.lastName,
             'email': self.email,
-            'created_at': self.created_at
         }

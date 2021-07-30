@@ -13,7 +13,7 @@ class User(db.Model, UserMixin):
     dob = db.Column(db.Date, nullable=False)
     medicalconditions = db.Column(db.String(2000), nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
-    created_at = db.Column(db.Date, nullable=False)
+
 
     userPatientCard = db.relationship('patientCard', back_populates='patientCardUser')
 
@@ -37,5 +37,5 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'dob': self.dob,
             'medicalconditions': self.medicalconditions,
-            'created_at': self.created_at
+        
         }

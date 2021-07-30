@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 91867876d0d5
+Revision ID: 6d5a15ce021c
 Revises: 
-Create Date: 2021-07-29 12:03:29.730382
+Create Date: 2021-07-29 23:17:50.556362
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '91867876d0d5'
+revision = '6d5a15ce021c'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -24,7 +24,6 @@ def upgrade():
     sa.Column('lastName', sa.String(length=80), nullable=False),
     sa.Column('email', sa.String(length=225), nullable=False),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
-    sa.Column('created_at', sa.Date(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
     )
@@ -36,7 +35,6 @@ def upgrade():
     sa.Column('dob', sa.Date(), nullable=False),
     sa.Column('medicalconditions', sa.String(length=2000), nullable=False),
     sa.Column('hashed_password', sa.String(length=255), nullable=False),
-    sa.Column('created_at', sa.Date(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email')
     )
@@ -48,7 +46,6 @@ def upgrade():
     sa.Column('upperbody', sa.VARCHAR(length=500), nullable=True),
     sa.Column('lowerbody', sa.VARCHAR(length=500), nullable=True),
     sa.Column('comment', sa.VARCHAR(length=1000), nullable=True),
-    sa.Column('created_at', sa.Date(), nullable=False),
     sa.ForeignKeyConstraint(['doctorId'], ['doctors.id'], ),
     sa.ForeignKeyConstraint(['userId'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
