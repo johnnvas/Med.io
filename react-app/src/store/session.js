@@ -1,6 +1,12 @@
 // constants
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
+const GET_USER = 'session/GET_USER';
+
+const getUser = (user) => ({
+	type: GET_USER,
+	user,
+});
 
 const setUser = (user) => ({
   type: SET_USER,
@@ -28,6 +34,25 @@ export const authenticate = () => async (dispatch) => {
     dispatch(setUser(data));
   }
 }
+
+export const singleUser = (id) => async (dispatch) => {
+	const res = await fetch(`/api/users/${id}`);
+	if (res.ok) {
+		const user = await res.json();
+		dispatch(getUser(user));
+	}
+};
+
+const initialState2 = { user: '' };
+export function singleUserReducer(state = initialState2, action) {
+	switch (action.type) {
+		case GET_USER:
+			return { user: action.user };
+		default:
+			return state;
+	}
+}
+
 
 export const login = (email, password) => async (dispatch) => {
   const response = await fetch('/api/auth/login', {

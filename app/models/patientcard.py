@@ -22,8 +22,9 @@ class patientCard(db.Model):
         return {
             'id': self.id,
             'userId': self.userId,
+            'doctorId': self.doctorId,
             'upperbody': self.upperbody,
             'lowerbody': self.lowerbody,
             'comment': self.comment,
-
+            'diagnosis': self.diagnosis
         }

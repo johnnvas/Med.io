@@ -3,10 +3,11 @@ import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
-import NavBar from './components/NavBar';
+import NavBar from './components/Navbar/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
+import PatientCards from './components/PatientCards';
 import { authenticate } from './store/session';
 
 function App() {
@@ -28,9 +29,9 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-       <Route exact path="/">
+       {/* <Route exact path="/">
           <Redirect from="/" to="/sign-up" />
-        </Route>
+        </Route> */}
         <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
@@ -44,7 +45,8 @@ function App() {
           <User />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
-          <h1>My Home Page</h1>
+          <h1>Your Patient Cards</h1>
+          <PatientCards />
         </ProtectedRoute>
       </Switch>
     </BrowserRouter>
