@@ -1,47 +1,48 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory, Link } from "react-router-dom";
-import { getCARDSThunk } from '../../store/patientcard'
+import { getCARDSThunk } from "../../store/patientcard";
+import EditButton from './EditButton'
+import './patientcards.css'
 
 function PatientCards() {
   const dispatch = useDispatch();
   const history = useHistory();
-  const allPatientCards = useSelector(state => Object.values(state.patientCards));
-  const user = useSelector(state => state.user);
+  const allPatientCards = useSelector((state) =>
+    Object.values(state.patientCards)
+  );
+  const user = useSelector((state) => state.session.user);
   const first = allPatientCards[0];
 
-
-  console.log('PATIENT CARDSSSSS', allPatientCards);
-  console.log('PATIENT CARDDDD', first);
+  console.log("PATIENT CARDSSSSS", allPatientCards);
+  console.log("USEEEERRRRRR", user);
 
   useEffect(() => {
     dispatch(getCARDSThunk());
   }, [dispatch]);
 
-
   return (
     <div className="PatientCards">
       {allPatientCards &&
-        allPatientCards?.map(pc => (
-        <div>
-          <div className="PatientCard-header">
-            <div className="PatientCard-name">
-              {pc.userId}, {pc.doctorId}
-            </div>
-              <div className="PatientCard-body">
-                <div className="PatientCard-body-left">
-                  {pc.comment}
+        allPatientCards?.map((pc) => (
+          <div className="pc-container">
+            <div className="">
+              <div className="PatientCard-name">
+                Patient name: {user.firstName}, Patient ID: {pc.userId}, Reviewed by Doctor: {pc.doctorId}
+              </div>
+              {user?.id === pc.userId && (
+                <div className="edit-container">
+                  <EditButton pc={pc}/>
                 </div>
-          </div>
-            <div className="PatientCard-dob">
-              Diagnosis: {pc.diagnosis}
+              )}
+              <div>
+                <div >Patient Comment: {pc.comment}</div>
+              </div>
+              <div>Diagnosis: {pc.diagnosis}</div>
             </div>
           </div>
-        </div>
-      ))}
-      <div>HELLOO</div>
+        ))}
     </div>
   );
-
 }
 export default PatientCards;

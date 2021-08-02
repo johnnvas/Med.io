@@ -39,20 +39,22 @@ export const getCARDSThunk = () => async (dispatch) => {
   }
 };
 
-//UPDATE
-// export const updateCARDThunk = (id, description) => async (dispatch) => {
-//   const res = await fetch(`/api/posts/${id}/${description}`, {
-//     method: "PUT",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({ id, description }),
-//   });
-//   if (res.ok) {
-//     const updateCard = await res.json();
-//     dispatch(getCARDS(updateCard));
-//   }
-// };
+// UPDATE
+export const updateCARDThunk = (id, comment) => async (dispatch) => {
+  const res = await fetch(`/api/patient_cards`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ id, comment }),
+  });
+  if (res.ok) {
+    const updateCard = await res.json();
+    dispatch(getCARDS(updateCard));
+  }
+};
+
+
 export const getSingleCARDThunk = (CARDId) => async (dispatch) => {
   const res = await fetch(`/api/patientcards/${CARDId}`);
   if (res.ok) {
@@ -61,6 +63,7 @@ export const getSingleCARDThunk = (CARDId) => async (dispatch) => {
     return singleCARD;
   }
 };
+
 //DELETE
 export const deleteCARDThunk = (id) => async (dispatch) => {
   const res = await fetch(`/api/posts/${id}`, {
@@ -73,7 +76,9 @@ export const deleteCARDThunk = (id) => async (dispatch) => {
     return res;
   }
 };
-const initialState = {};
+
+
+const initialState = {thing: "" };
 
 const patientCardReducer = (state = initialState, action) => {
   let newState = {};

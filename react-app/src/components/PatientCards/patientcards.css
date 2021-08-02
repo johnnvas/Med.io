@@ -1,0 +1,18 @@
+.pc-container{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  margin:30px;
+}
+
+#elipses {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../images/elipses.svg");
+  background-size: 20px;
+  background-repeat: no-repeat;
+  height: 30px;
+  width: 30px;
+  transition-duration: 0.4s;
+}
