@@ -20,6 +20,8 @@ function PatientCards() {
 
   return (
     <div className="PatientCards">
+      <h1>Welcome, {user.firstName}!</h1>
+      <h2>Your Patient Cards: </h2>
       {allPatientCards &&
         allPatientCards?.map((pc) => (
           <div className="pc-container">

@@ -8,6 +8,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import UsersList from './components/UsersList';
 import User from './components/User';
 import PatientCards from './components/PatientCards';
+import SplashPage from './components/SplashPage';
 import PatientCardForm from './components/PostPTCard'
 import { authenticate } from './store/session';
 
@@ -30,9 +31,9 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-       {/* <Route path="/">
-          <Redirect from="/" to="/sign-up" />
-        </Route> */}
+       <Route exact path="/" >
+          <SplashPage/>
+        </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
         </Route>
@@ -45,8 +46,7 @@ function App() {
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
         </ProtectedRoute>
-        <ProtectedRoute path='/' exact={true} >
-          <h1>Your Patient Cards</h1>
+        <ProtectedRoute path='/patientcards' exact={true} >
           <PatientCards />
         </ProtectedRoute>
       </Switch>
