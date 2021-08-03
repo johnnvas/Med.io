@@ -28,8 +28,8 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to='/users' exact={true} activeClassName='active'>
-            Users
+          <NavLink to='/newpatientcard' exact={true} activeClassName='active'>
+            New Patient Card
           </NavLink>
         </li>
         <li>
@@ -40,12 +40,12 @@ const NavBar = () => {
   } else {
     sessionLinks=(
     <>
-        <ul>
+        <div>
            <span className='login-span'>Already a user?</span>
           <NavLink to='/login' exact={true} activeClassName='active'>
            Login
           </NavLink>
-        </ul>
+        </div>
       </>
     )
   }

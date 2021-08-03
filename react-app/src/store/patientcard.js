@@ -19,7 +19,9 @@ export const deleteCARD = (id) => ({
 
 //CREATE
 export const uploadCARDThunk = (payload) => async (dispatch) => {
-  const res = await fetch("/api/patientcards/new", {
+  console.log('THIS IS PAYLOAAAAADDDDDDDDDDD', payload);
+
+  const res = await fetch("/api/patientcards", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -40,17 +42,17 @@ export const getCARDSThunk = () => async (dispatch) => {
 };
 
 // UPDATE
-export const updateCARDThunk = (id, comment) => async (dispatch) => {
+export const updateCARDThunk = (payload) => async (dispatch) => {
   const res = await fetch(`/api/patient_cards`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ id, comment }),
+    body: JSON.stringify(payload),
   });
   if (res.ok) {
     const updateCard = await res.json();
-    dispatch(getCARDS(updateCard));
+    dispatch(uploadCARD(updateCard));
   }
 };
 
@@ -78,17 +80,17 @@ export const deleteCARDThunk = (id) => async (dispatch) => {
 };
 
 
-const initialState = {thing: "" };
+const initialState = {};
 
 const patientCardReducer = (state = initialState, action) => {
   let newState = {};
   switch (action.type) {
     case UPLOAD_CARD:
-      newState = {
+      return {
         ...state,
         [action.CARD.id]: action.CARD,
       };
-      return newState;
+      // return newState;
     case GET_CARDS:
       const allCards = {};
       action.CARD.patient_cards.forEach((card) => {

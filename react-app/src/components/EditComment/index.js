@@ -12,7 +12,7 @@ function EditComment({ pc }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateCARDThunk(pc.id, comment))
+    dispatch(updateCARDThunk({ 'id': pc.id, 'comment': comment}))
   };
 
   const updateComment = (e) => {
@@ -21,7 +21,7 @@ function EditComment({ pc }) {
 
   useEffect(() => {
     dispatch(getCARDSThunk())
-  })
+  }, [dispatch])
 
   return (
     <div className="EditComment">

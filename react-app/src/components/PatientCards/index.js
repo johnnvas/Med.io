@@ -14,9 +14,6 @@ function PatientCards() {
   const user = useSelector((state) => state.session.user);
   const first = allPatientCards[0];
 
-  console.log("PATIENT CARDSSSSS", allPatientCards);
-  console.log("USEEEERRRRRR", user);
-
   useEffect(() => {
     dispatch(getCARDSThunk());
   }, [dispatch]);
