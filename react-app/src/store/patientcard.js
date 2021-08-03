@@ -21,7 +21,7 @@ export const deleteCARD = (id) => ({
 export const uploadCARDThunk = (payload) => async (dispatch) => {
   console.log('THIS IS PAYLOAAAAADDDDDDDDDDD', payload);
 
-  const res = await fetch("/api/patientcards", {
+  const res = await fetch("/api/patient_cards", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -58,7 +58,7 @@ export const updateCARDThunk = (payload) => async (dispatch) => {
 
 
 export const getSingleCARDThunk = (CARDId) => async (dispatch) => {
-  const res = await fetch(`/api/patientcards/${CARDId}`);
+  const res = await fetch(`/api/patient_cards/${CARDId}`);
   if (res.ok) {
     const singleCARD = await res.json();
     dispatch(getCARDS(singleCARD));
@@ -68,9 +68,9 @@ export const getSingleCARDThunk = (CARDId) => async (dispatch) => {
 
 //DELETE
 export const deleteCARDThunk = (id) => async (dispatch) => {
-  const res = await fetch(`/api/posts/${id}`, {
+  const res = await fetch(`/api/patient_cards/${+id}`, {
     method: "DELETE",
-    body: JSON.stringify({ id }),
+    body: JSON.stringify(),
   });
   if (res.ok) {
     await res.json();

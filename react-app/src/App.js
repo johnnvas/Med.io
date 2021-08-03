@@ -30,14 +30,14 @@ function App() {
     <BrowserRouter>
       <NavBar />
       <Switch>
-       {/* <Route exact path="/">
+       {/* <Route path="/">
           <Redirect from="/" to="/sign-up" />
         </Route> */}
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
+        </Route>
+        <Route path='/login' exact={true}>
+          <LoginForm />
         </Route>
         <ProtectedRoute path='/newpatientcard' exact={true} >
           <PatientCardForm/>

@@ -10,15 +10,10 @@ function EditButton({ pc }) {
   const dispatch = useDispatch();
 
 
-  const refresh = () => {
-      dispatch(getCARDSThunk());
-    };
+  // const refresh = () => {
+  //     dispatch(getCARDSThunk());
+  //   };
 
-   const deleteCard = (id) => {
-     dispatch(deleteCARDThunk(id));
-     dispatch(getCARDSThunk());
-     refresh();
-   };
 
   const openMenu = () => {
     if (showMenu) return;
@@ -76,7 +71,10 @@ function EditButton({ pc }) {
           </button>
           <button
             className="delete-btn edit-btn"
-            onClick={() => deleteCard(pc.id)}
+            onClick={() => {
+              console.log('THIS IS PCID!!!!!!!!!!!',pc.id)
+              dispatch(deleteCARDThunk(pc.id ))
+            }}
           >
             Delete
           </button>

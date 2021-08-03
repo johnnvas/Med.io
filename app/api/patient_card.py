@@ -22,15 +22,26 @@ def update_patient_card():
 
 @patient_cards_route.route('/api/patient_cards', methods=['POST'])
 def create_patient_card():
-    patient_card = patientCard(request.json['userId'], request.json['doctorId'], request.json['diagnosis'], request.json['upperbody'], request.json['lowerbody'], request.json['comment'])
+    patient_card = patientCard(
+        userId=request.json['userId'],
+        doctorId=request.json['doctorId'],
+        # diagnosis=request.json['diagnosis'],
+        upperbody=request.json['upperbody'],
+        lowerbody=request.json['lowerbody'],
+        comment=request.json['comment'])
+
     db.session.add(patient_card)
     db.session.commit()
     return patient_card.to_dict()
 
 
-@patient_cards_route.route('/api/patient_cards', methods=['DELETE'])
+@patient_cards_route.route('/api/patient_cards/<int:id>', methods=['DELETE'])
 def delete_patient_card(id):
+    print('THIS IS THE ID!!!!!!!!!!!!!!', id)
+
     patient_card = patientCard.query.get(id)
+
+    print('THIS IS THE PATIENTCARD!!!!!!!!!!!!!!', patient_card)
     db.session.delete(patient_card)
     db.session.commit()
     return {'id':id}

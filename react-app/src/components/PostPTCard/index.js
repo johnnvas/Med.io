@@ -44,11 +44,11 @@ const PatientCardForm = () => {
     e.preventDefault();
     dispatch(
       uploadCARDThunk({
-        upperbody,
-        lowerbody,
-        userId: user.id,
-        comment,
-        doctorId,
+        'upperbody': upperbody,
+        'lowerbody': lowerbody,
+        'userId': user.id,
+        'comment': comment,
+        'doctorId': doctorId,
       })
     );
     dispatch(getCARDSThunk());
@@ -57,8 +57,9 @@ const PatientCardForm = () => {
 
   return (
     <form onSubmit={onSubmit} className="modal3">
-      <div className="title_container">
-        <h2>Create A New PatientCard: Where Does It Hurt?</h2>
+      <div className="title-container">
+        <h1>Create A New PatientCard:</h1>
+        <h2>Where Does It Hurt? </h2>
       </div>
       <div className="radio-field">
         {" "}
@@ -67,8 +68,9 @@ const PatientCardForm = () => {
         <input type="radio" value={lowerbody} name="Lower Body" onChange={updateLowerBody}/> LowerBody
         <input type="radio" value="Other" name="Both" onChange={ updateBoth}/> Both
       </div>
-      <div className="input_field">
+      <div className="input-field">
         {" "}
+        <label>Notes: </label>
         <input
           name="Comment"
           type="text"
@@ -76,8 +78,8 @@ const PatientCardForm = () => {
           value={comment}
           onChange={ updateComment }
         />
-      </div>
-      <div>
+        <br/>
+        <label>Doctor ID: </label>
         <input
           type='text'
           placeholder="(1, 2, 3)"

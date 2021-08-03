@@ -12,7 +12,7 @@ const NavBar = () => {
   if (user) {
     sessionLinks = (
       <>
-        <li>
+        {/* <li>
           <NavLink to='/' exact={true} activeClassName='active'>
             Home
           </NavLink>
@@ -26,7 +26,7 @@ const NavBar = () => {
           <NavLink to='/sign-up' exact={true} activeClassName='active'>
             Sign Up
           </NavLink>
-        </li>
+        </li> */}
         <li>
           <NavLink to='/newpatientcard' exact={true} activeClassName='active'>
             New Patient Card
