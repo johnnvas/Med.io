@@ -9,7 +9,7 @@ const PatientCardForm = () => {
   const [upperbody, setUpperBody] = useState("");
   const [lowerbody, setLowerBody] = useState("");
   const [comment, setComment] = useState("");
-  const [doctorId, setDoctorId] = useState("");
+  // const [doctorId, setDoctorId] = useState("");
   //Doctor Id is temporary until i fix the doctor login
 
   const user = useSelector((state) => state.session.user);
@@ -35,9 +35,9 @@ const PatientCardForm = () => {
     setComment(e.target.value);
   }
 
-  const updateDoctorId = (e) => {
-    setDoctorId(e.target.value);
-  }
+  // const updateDoctorId = (e) => {
+  //   setDoctorId(e.target.value);
+  // }
 
 
   const onSubmit = (e) => {
@@ -48,11 +48,11 @@ const PatientCardForm = () => {
         'lowerbody': lowerbody,
         'userId': user.id,
         'comment': comment,
-        'doctorId': doctorId,
+        // 'doctorId': doctorId,
       })
     );
     dispatch(getCARDSThunk());
-    history.push("/");
+    history.push("/patientcards");
   };
 
   return (
@@ -79,13 +79,13 @@ const PatientCardForm = () => {
           onChange={ updateComment }
         />
         <br/>
-        <label>Doctor ID: </label>
+        {/* <label>Doctor ID: </label>
         <input
           type='text'
           placeholder="(1, 2, 3)"
           value={doctorId}
           onChange={updateDoctorId}
-        />
+        /> */}
       </div>
         <button type="submit" className="modal-button2">
           Submit

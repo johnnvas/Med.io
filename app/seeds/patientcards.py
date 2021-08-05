@@ -6,11 +6,11 @@ from datetime import date
 # Adds a demo user, you can add other users here if you want
 def seed_patientCards():
     patientCard1 = patientCard(
-        userId=1, upperbody='yes', doctorId=1, lowerbody='no', diagnosis='you hella sick', comment='my leg hurts when i sit')
+        userId=1, upperbody='yes', lowerbody='no', diagnosis='you hella sick', comment='my leg hurts when i sit')
     patientCard2 = patientCard(
-         userId=2, upperbody='no', doctorId=2, lowerbody='yes', diagnosis='you hella sick', comment='my arm hurts when i blink')
+         userId=2, upperbody='no', lowerbody='yes', diagnosis='you hella sick', comment='my arm hurts when i blink')
     patientCard3 = patientCard(
-       userId=3, upperbody='yes', doctorId=3, lowerbody='no', diagnosis='you hella sick', comment='i hear bells when i sneeze')
+       userId=3, upperbody='yes', lowerbody='no', diagnosis='you hella sick', comment='i hear bells when i sneeze')
 
     db.session.add(patientCard1)
     db.session.add(patientCard2)

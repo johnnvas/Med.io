@@ -32,7 +32,7 @@ const SignUpForm = () => {
 
 
   const updateDate = (date) => {
-     console.log('THIS IS THE DATE==============>', date)
+
     setDob(date)
   };
 

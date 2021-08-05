@@ -3,15 +3,25 @@ from flask import Blueprint, request
 
 patient_cards_route = Blueprint('patient_cards_route', __name__)
 
-@patient_cards_route.route('/api/patient_cards', methods=['GET'])
+
+@patient_cards_route.route('/', methods=['GET'])
 def get_patient_cards():
     patient_cards = patientCard.query.all()
     return {
         'patient_cards': [patient_card.to_dict() for patient_card in patient_cards]
     }
 
+@patient_cards_route.route('/<int:id>')
+def get_single_patient_card(id):
+    patient_card = patientCard.query.get(id)
+    return {'patient_cards': [patient_card.to_dict()]}
 
-@patient_cards_route.route('/api/patient_cards', methods=['PUT'])
+
+
+
+
+
+@patient_cards_route.route('/', methods=['PUT'])
 def update_patient_card():
     patient_card = patientCard.query.get(request.json['id'])
     patient_card.comment = request.json['comment']
@@ -20,11 +30,11 @@ def update_patient_card():
     return patient_card.to_dict()
 
 
-@patient_cards_route.route('/api/patient_cards', methods=['POST'])
+@patient_cards_route.route('/', methods=['POST'])
 def create_patient_card():
     patient_card = patientCard(
         userId=request.json['userId'],
-        doctorId=request.json['doctorId'],
+        # doctorId=request.json['doctorId'],
         # diagnosis=request.json['diagnosis'],
         upperbody=request.json['upperbody'],
         lowerbody=request.json['lowerbody'],
@@ -35,7 +45,7 @@ def create_patient_card():
     return patient_card.to_dict()
 
 
-@patient_cards_route.route('/api/patient_cards/<int:id>', methods=['DELETE'])
+@patient_cards_route.route('/<int:id>', methods=['DELETE'])
 def delete_patient_card(id):
     print('THIS IS THE ID!!!!!!!!!!!!!!', id)
 

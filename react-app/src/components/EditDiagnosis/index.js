@@ -1,18 +1,15 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { updateCARDThunk, getCARDSThunk } from "../../store/patientcard";
-import "./EditComment.css";
+import { updateDIAGNOSISThunk, getDIAGNOSISThunk } from "../../store/diagnosis";
+// import EditButton from '../PatientCards/EditButton'
 
-function EditComment({ pc }) {
+function EditDiagnosis({d}) {
   const dispatch = useDispatch();
   const [comment, setComment] = useState('');
-
-
-  
-
+    console.log("THIS IS DDDDD", d)
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateCARDThunk({ 'id': pc.id, 'comment': comment}))
+    dispatch(updateDIAGNOSISThunk({ 'id': d.id, 'comment': comment}))
   };
 
   const updateComment = (e) => {
@@ -20,11 +17,11 @@ function EditComment({ pc }) {
   }
 
   useEffect(() => {
-    dispatch(getCARDSThunk())
+    dispatch(getDIAGNOSISThunk())
   }, [dispatch])
 
   return (
-    <div className="EditComment">
+    <div className="EditDiagnosis">
       <form onSubmit={onSubmit}>
          <label className="edit-comment"></label>
         <label>
@@ -46,4 +43,4 @@ function EditComment({ pc }) {
     </div>
   )
 }
-export default EditComment
+export default EditDiagnosis

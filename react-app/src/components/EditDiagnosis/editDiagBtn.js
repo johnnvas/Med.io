@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getCARDSThunk, deleteCARDThunk } from '../../store/patientcard'
-import './patientcards.css'
-import EditComment from "../EditComment";
+import {  deleteDIAGNOSISThunk } from '../../store/diagnosis'
+import './edit.css'
+import EditDiagnosis from "../EditDiagnosis";
 
-function EditButton({ pc }) {
+function EditDiagnosisButton({d}) {
   const [showMenu, setShowMenu] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
   const dispatch = useDispatch();
@@ -56,7 +56,7 @@ function EditButton({ pc }) {
     <div className="edit-menu">
       <button
         className="edit-button"
-        id="elipses"
+        id="elipses2"
         onClick={showMenu === true ? closeMenu : openMenu}
       ></button>
 
@@ -73,15 +73,15 @@ function EditButton({ pc }) {
             className="delete-btn edit-btn"
             onClick={() => {
 
-              dispatch(deleteCARDThunk(pc.id ))
+              dispatch(deleteDIAGNOSISThunk(d.id ))
             }}
           >
             Delete
           </button>
-          {showEdit && <EditComment pc={pc} />}
+          {showEdit && <EditDiagnosis d={d} />}
         </div>
       )}
     </div>)
 }
 
-export default EditButton
+export default EditDiagnosisButton

@@ -9,8 +9,10 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     firstName = db.Column(db.String(80), nullable=False)
     lastName = db.Column(db.String(80), nullable=False)
+    imageUrl = db.Column(db.String(1000))
     email = db.Column(db.String(225), unique=True, nullable=False)
     dob = db.Column(db.Date, nullable=False)
+    doctor = db.Column(db.Boolean, nullable=False, default=False)
     medicalconditions = db.Column(db.String(2000), nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
 
@@ -36,6 +38,7 @@ class User(db.Model, UserMixin):
             'lastName': self.lastName,
             'email': self.email,
             'dob': self.dob,
+            'doctor': self.doctor,
             'medicalconditions': self.medicalconditions,
-        
+
         }

@@ -7,7 +7,7 @@ class patientCard(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     userId = db.Column(db.Integer, ForeignKey('users.id'))
-    doctorId = db.Column(db.Integer, ForeignKey('doctors.id'))
+    # doctorId = db.Column(db.Integer, ForeignKey('doctors.id'))
     diagnosis = db.Column(db.VARCHAR(1000))
     upperbody = db.Column(db.VARCHAR(500), nullable=True)
     lowerbody = db.Column(db.VARCHAR(500), nullable=True)
@@ -15,16 +15,18 @@ class patientCard(db.Model):
 
 
     patientCardUser = db.relationship('User', back_populates='userPatientCard')
-    patientCardDoctor = db.relationship('Doctor', back_populates='doctorPatientCard')
+    patientCardDiagnosis = db.relationship('Diagnosis', cascade='all, delete-orphan',back_populates='diagnosisPatientCard')
 
 
     def to_dict(self):
         return {
             'id': self.id,
             'userId': self.userId,
-            'doctorId': self.doctorId,
+            # 'doctorId': self.doctorId,
             'upperbody': self.upperbody,
             'lowerbody': self.lowerbody,
             'comment': self.comment,
-            'diagnosis': self.diagnosis
+            'diagnosis': self.diagnosis,
+            'diagnoses': [d.to_dict() for d in self.patientCardDiagnosis],
+            # 'user': self.patientCardUser
         }

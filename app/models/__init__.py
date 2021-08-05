@@ -1,4 +1,4 @@
 from .db import db
 from .user import User
-from .doctor import Doctor
+from .diagnosis import Diagnosis
 from .patientcard import patientCard

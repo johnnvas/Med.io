@@ -1,0 +1,11 @@
+#elipses2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../images/elipses.svg");
+  background-size: 20px;
+  background-repeat: no-repeat;
+  height: 30px;
+  width: 30px;
+  transition-duration: 0.4s;
+}

@@ -4,6 +4,8 @@ import { useHistory, Link } from "react-router-dom";
 import { getCARDSThunk } from "../../store/patientcard";
 import EditButton from './EditButton'
 import './patientcards.css'
+import OnePatientCard from "../OnePTCard";
+
 
 function PatientCards() {
   const dispatch = useDispatch();
@@ -12,36 +14,35 @@ function PatientCards() {
     Object.values(state.patientCards)
   );
   const user = useSelector((state) => state.session.user);
-  const first = allPatientCards[0];
+
 
   useEffect(() => {
     dispatch(getCARDSThunk());
   }, [dispatch]);
 
-  return (
-    <div className="PatientCards">
-      <h1>Welcome, {user.firstName}!</h1>
-      <h2>Your Patient Cards: </h2>
-      {allPatientCards &&
-        allPatientCards?.map((pc) => (
-          <div className="pc-container">
-            <div className="">
-              <div className="PatientCard-name">
-                Patient name: {user.firstName}, Patient ID: {pc.userId}, Reviewed by Doctor: {pc.doctorId}
-              </div>
-              {user?.id === pc.userId && (
-                <div className="edit-container">
-                  <EditButton pc={pc}/>
-                </div>
-              )}
-              <div>
-                <div >Patient Comment: {pc.comment}</div>
-              </div>
-              <div>Diagnosis: {pc.diagnosis}</div>
-            </div>
-          </div>
-        ))}
-    </div>
-  );
+  if (user.doctor) {
+    return (
+      <div className="PatientCards">
+        <h1>Welcome, Doctor {user.firstName}!</h1>
+        <h2>Your Patient Cards: </h2>
+        {allPatientCards &&
+          allPatientCards?.map((pc) => (
+            < OnePatientCard key={ pc.id}pc={pc} />
+          ))}
+      </div>
+    );
+  } else {
+
+    return (
+      <div className="PatientCards">
+        <h1>Welcome, {user.firstName}!</h1>
+        <h2>Your Patient Cards: </h2>
+        {allPatientCards &&
+          allPatientCards?.map((pc) => (
+            < OnePatientCard pc={pc}/>
+          ))}
+      </div>
+    );
+  }
 }
 export default PatientCards;

@@ -2,11 +2,13 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session, {singleUserReducer} from './session';
 import patientCardReducer from './patientcard'
+import diagnosis from './diagnosis';
 
 const rootReducer = combineReducers({
   session,
   singleUser: singleUserReducer,
-  patientCards: patientCardReducer
+  patientCards: patientCardReducer,
+  diagnosis
 });
 
 

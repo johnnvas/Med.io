@@ -19,7 +19,6 @@ export const deleteCARD = (id) => ({
 
 //CREATE
 export const uploadCARDThunk = (payload) => async (dispatch) => {
-  console.log('THIS IS PAYLOAAAAADDDDDDDDDDD', payload);
 
   const res = await fetch("/api/patient_cards", {
     method: "POST",

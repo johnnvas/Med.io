@@ -1,10 +1,62 @@
-/* .navbar{
+.navbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: fixed;
+  top: -4px;
+  height:100px;
+  text-decoration: none;
+  font-family: 'Arvo',
+  serif;
+  background-color: white;
+}
 
-} */
+.navbar.logo{
+  /* background-color: white; */
+  position: relative;
+}
 
+li {
+  list-style-type: none;
+}
+
+.navbar-right li {
+  display: flex;
+  position: absolute;
+  justify-content: space-between;
+  margin-right: 8px;
+  margin-left: 5px;
+  margin-top: 30px;
+  right: 30px;
+  /* background-color: white; */
+}
+
+.navbar-left li {
+  float: left;
+  margin-left: -15px;
+  /* background-color: white; */
+}
 
 .login-span{
   display: flex;
-  align-items:flex-end;
+  justify-content: flex-end;
   margin-right: 10px;
+}
+
+.coloredWord {
+  color: #d62828;
+}
+
+.secondWord {
+  color: #003049;
+}
+
+.logo{
+  font-family: 'Arvo',
+  serif;
+  font-size: 40px;
+  /* background-color: white; */
 }

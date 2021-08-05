@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link} from 'react-router-dom';
 import { useSelector } from "react-redux";
 import LogoutButton from '../auth/LogoutButton';
 import './navbar.css'
@@ -40,21 +40,30 @@ const NavBar = () => {
   } else {
     sessionLinks=(
     <>
-        <div>
+        <li>
            <span className='login-span'>Already a user?</span>
           <NavLink to='/login' exact={true} activeClassName='active'>
            Login
           </NavLink>
-        </div>
+        </li>
       </>
     )
   }
 
 
+
   return (
     <nav className="navbar">
       <ul>
-        <div className="navbar right">{sessionLinks}</div>
+        <div className="navbar-left">
+          <li className="navbar logo">
+            <Link to={`/patientcards`}>
+              <p className="logo"><span className='coloredWord'>Med</span><span className='secondWord'>.io</span></p>
+
+            </Link>
+          </li>
+        </div>
+        <div className="navbar-right">{sessionLinks}</div>
       </ul>
     </nav>
   );
