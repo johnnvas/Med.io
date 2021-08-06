@@ -13,9 +13,10 @@ function PatientCardPage() {
   const [showModal, setShowModal] = useState(false);
 
   const { cardId } = useParams();
-  const onePatientCard = useSelector((state) => state.patientCards[cardId]);
+  const pc = useSelector((state) => state.patientCards[cardId]);
   const diagnoses = useSelector((state) => Object.values(state.diagnosis));
 
+  console.log('PCCCCCCCCCC', pc)
 
   const user = useSelector((state) => state.session.user);
 
@@ -28,19 +29,14 @@ function PatientCardPage() {
     return (
       <div className="single-patientCard">
         <div className="singlePT-holder">
-          <div>Patient ID: {onePatientCard?.userId}</div>
+          <div>Patient ID: {pc?.userId}</div>
           <div>
-            <div>Patient Comment: {onePatientCard?.comment}</div>
+            <div>Patient Comment: {pc?.comment}</div>
           </div>
           {diagnoses && diagnoses?.map((d) => (
-            // <div className='ind-diagnosis'>Diagnosis: {d?.comment}</div>
             <DiagnosisComponent key={ d.id} d={d}/>
+            // <div className='ind-diagnosis'>Diagnosis: {d?.comment}</div>
           ))}
-            {/* {user?.id === onePatientCard?.userId && (
-          <div>
-            <EditDiagnosisButton onePatientCard={onePatientCard} />
-          </div>
-            )} */}
           <div>
             <button className="diagnose-btn" onClick={() => setShowModal(true)}>
               Diagnose
@@ -49,25 +45,26 @@ function PatientCardPage() {
         <DiagnosisForm
           showModal={showModal}
           setShowModal={setShowModal}
-          onePatientCard={onePatientCard}
+          pc={pc}
           />
           </div>
       </div>
     );
   } else {
+
     return (
       <div className="single-patientCard">
         <div className="singlePT-holder">
-          <div>Patient ID: {onePatientCard?.userId}</div>
-          {user?.id === onePatientCard?.userId && (
+          <div>Patient ID: {pc?.userId}</div>
+          {user?.id === pc?.userId && (
             <div>
-              <EditButton onePatientCard={onePatientCard} />
+              <EditButton pc={pc} />
             </div>
           )}
           <div>
-            <div>Patient Comment: {onePatientCard?.comment}</div>
+            <div>Patient Comment: {pc?.comment}</div>
           </div>
-          <div>Diagnosis: {onePatientCard?.diagnosis}</div>
+          <div>Diagnosis: {pc?.diagnosis}</div>
         </div>
       </div>
     );

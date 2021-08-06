@@ -65,6 +65,15 @@ export const getSingleCARDThunk = (CARDId) => async (dispatch) => {
   }
 };
 
+// export const getSingleCARDThunk = (userId) => async (dispatch) => {
+//   const res = await fetch(`/api/patient_cards/users/${userId}`);
+//   if (res.ok) {
+//     const singleCARD = await res.json();
+//     dispatch(getCARDS(singleCARD));
+//     return singleCARD;
+//   }
+// };
+
 //DELETE
 export const deleteCARDThunk = (id) => async (dispatch) => {
   const res = await fetch(`/api/patient_cards/${+id}`, {

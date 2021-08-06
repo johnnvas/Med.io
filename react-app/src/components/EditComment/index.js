@@ -8,7 +8,6 @@ function EditComment({ pc }) {
   const [comment, setComment] = useState('');
 
 
-  
 
   const onSubmit = (e) => {
     e.preventDefault();

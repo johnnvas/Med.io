@@ -35,9 +35,6 @@ const PatientCardForm = () => {
     setComment(e.target.value);
   }
 
-  // const updateDoctorId = (e) => {
-  //   setDoctorId(e.target.value);
-  // }
 
 
   const onSubmit = (e) => {
@@ -64,9 +61,9 @@ const PatientCardForm = () => {
       <div className="radio-field">
         {" "}
         <label>General Location: </label>
-        <input type="radio" value={upperbody} name="Upper Body" onChange={updateUpperBody}/> Upperbody
-        <input type="radio" value={lowerbody} name="Lower Body" onChange={updateLowerBody}/> LowerBody
-        <input type="radio" value="Other" name="Both" onChange={ updateBoth}/> Both
+        <input type="radio" value={upperbody} name="body" onChange={updateUpperBody}/> Upperbody
+        <input type="radio" value={lowerbody} name="body" onChange={updateLowerBody}/> LowerBody
+        <input type="radio" value="Other" name="body" onChange={ updateBoth}/> Both
       </div>
       <div className="input-field">
         {" "}
@@ -76,16 +73,10 @@ const PatientCardForm = () => {
           type="text"
           placeholder="Any additional comments?"
           value={comment}
-          onChange={ updateComment }
+          onChange={updateComment}
+          required={true}
         />
         <br/>
-        {/* <label>Doctor ID: </label>
-        <input
-          type='text'
-          placeholder="(1, 2, 3)"
-          value={doctorId}
-          onChange={updateDoctorId}
-        /> */}
       </div>
         <button type="submit" className="modal-button2">
           Submit

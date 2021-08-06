@@ -35,9 +35,11 @@ function PatientCards() {
         <h1>Welcome, {user.firstName}!</h1>
         <h2>Your Patient Cards: </h2>
         {allPatientCards &&
-          allPatientCards?.map((pc) => (
-            < OnePatientCard key={ pc.id} pc={pc}/>
-          ))}
+          allPatientCards?.map((pc) => {
+            if (pc.userId === user.id) {
+              return < OnePatientCard key={pc.id} pc={pc} />
+            }
+          })}
       </div>
     );
   }

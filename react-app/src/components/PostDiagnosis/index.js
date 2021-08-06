@@ -2,17 +2,14 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./postdiagnosis.css";
 import { uploadDIAGNOSISThunk } from "../../store/diagnosis";
-import { useHistory, useParams } from "react-router-dom";
 import Modal from 'react-modal'
 
-const DiagnosisForm = ({ showModal, setShowModal, onePatientCard}) => {
-  const history = useHistory();
+const DiagnosisForm = ({ showModal, setShowModal, pc}) => {
   const [comment, setComment] = useState("");
 
   const user = useSelector((state) => state.session.user);
 
   const dispatch = useDispatch();
-  const { id } = useParams();
 
 
   const updateComment = (e) => {
@@ -26,12 +23,12 @@ const DiagnosisForm = ({ showModal, setShowModal, onePatientCard}) => {
       uploadDIAGNOSISThunk({
         'doctorId': user.id,
         'comment': comment,
-        'patientCardId': onePatientCard.id,
+        'patientCardId': pc.id,
       }),
       setShowModal(false)
     );
     // dispatch(getDIAGNOSISThunk());
-    history.push(`/patientcards/${id}`);
+    // history.push(`/patientcards/${id}`);
   };
 
   return (
@@ -51,7 +48,8 @@ const DiagnosisForm = ({ showModal, setShowModal, onePatientCard}) => {
             type="text"
             placeholder="What is your diagnosis?"
             value={comment}
-            onChange={ updateComment }
+            onChange={updateComment}
+            required
           />
           <br/>
         </div>
