@@ -28,9 +28,14 @@ const NavBar = () => {
           </NavLink>
         </li> */}
         <li>
-          <NavLink to='/newpatientcard' exact={true} activeClassName='active'>
+          <div className='navNewPT'>
+            <NavLink to='/newpatientcard' exact={true}
+              activeClassName='active'
+              style={{ textDecoration: 'none' }}
+            >
             New Patient Card
           </NavLink>
+          </div>
         </li>
         <li>
           <LogoutButton />
@@ -42,7 +47,7 @@ const NavBar = () => {
     <>
         <li>
            <span className='login-span'>Already a user?</span>
-          <NavLink to='/login' exact={true} activeClassName='active'>
+          <NavLink to='/login' exact={true} activeClassName='active' style={{ textDecoration: 'none' }}>
            Login
           </NavLink>
         </li>
@@ -57,7 +62,7 @@ const NavBar = () => {
       <ul>
         <div className="navbar-left">
           <li className="navbar logo">
-            <Link to={`/patientcards`}>
+            <Link to={`/patientcards`} style={{ textDecoration: 'none' }}>
               <p className="logo"><span className='coloredWord'>Med</span><span className='secondWord'>.io</span></p>
 
             </Link>

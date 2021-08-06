@@ -1,13 +1,12 @@
 import EditButton from '../PatientCards/EditButton'
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useHistory, Link } from "react-router-dom";
+import React from "react";
+import { useSelector } from "react-redux";
+import {  Link } from "react-router-dom";
 
 
 export default function OnePatientCard({ pc }) {
 
   const user = useSelector((state) => state.session.user);
-  const diagnosis = useSelector((state) => state.diagnosis);
 
 
   return (
@@ -15,7 +14,8 @@ export default function OnePatientCard({ pc }) {
     <div className="pc-container">
             <div className="">
           <div className="PatientCard-name">
-            <Link to={`/patientcards/${pc.id}`}>
+          <Link to={`/patientcards/${pc.id}`}
+          style={{ textDecoration: 'none' }}>
               Patient ID: {pc.userId}
             </Link>
               </div>

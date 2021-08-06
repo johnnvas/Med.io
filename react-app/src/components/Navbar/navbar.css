@@ -12,6 +12,7 @@
   font-family: 'Arvo',
   serif;
   background-color: white;
+  text-decoration: none;
 }
 
 .navbar.logo{
@@ -31,12 +32,16 @@ li {
   margin-left: 5px;
   margin-top: 30px;
   right: 30px;
+   font-family: 'Arvo',
+   serif;
+   text-decoration: none;
   /* background-color: white; */
 }
 
 .navbar-left li {
   float: left;
   margin-left: -15px;
+  text-decoration: none;
   /* background-color: white; */
 }
 
@@ -58,5 +63,11 @@ li {
   font-family: 'Arvo',
   serif;
   font-size: 40px;
+  text-decoration: none;
   /* background-color: white; */
+}
+
+.navNewPT {
+  position: relative;
+  right: 90px;
 }

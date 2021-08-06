@@ -1,20 +1,27 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { updateDIAGNOSISThunk, getDIAGNOSISThunk } from "../../store/diagnosis";
-// import EditButton from '../PatientCards/EditButton'
 
-function EditDiagnosis({d}) {
+
+function EditDiagnosis({ d }) {
+
   const dispatch = useDispatch();
   const [comment, setComment] = useState('');
-    console.log("THIS IS DDDDD", d)
-  const onSubmit = (e) => {
-    e.preventDefault();
-    dispatch(updateDIAGNOSISThunk({ 'id': d.id, 'comment': comment}))
-  };
+  console.log("THIS IS DDDDD ", d)
 
   const updateComment = (e) => {
     setComment(e.target.value);
   }
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    dispatch(updateDIAGNOSISThunk({ 'id': d.id, 'comment': comment, 'doctorId': d.doctorId, 'patientCardId': d.patientCardId  }));
+  };
+
+//   comment: "ayeeee"
+// doctorId: 1
+// id: 9
+// patientCardId: 2
 
   useEffect(() => {
     dispatch(getDIAGNOSISThunk())

@@ -1,14 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { useHistory, Link, useParams } from "react-router-dom";
-import { getDIAGNOSISThunk } from "../../store/diagnosis";
-import EditDiagnosisButton from '../EditDiagnosis'
+import React from "react";
+import { useSelector } from "react-redux";
+import EditDiagnosisButton from '../EditDiagnosis/editDiagBtn'
 
 function DiagnosisComponent({d}) {
   const user = useSelector((state) => state.session.user);
-
-  const { cardId } = useParams();
-  // console.log("THIS IS DDDDD", d)
 
 
   return (

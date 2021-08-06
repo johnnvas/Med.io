@@ -21,7 +21,7 @@ def get_single_patient_card(id):
 
 
 
-@patient_cards_route.route('/', methods=['PUT'])
+@patient_cards_route.route('', methods=['PUT'])
 def update_patient_card():
     patient_card = patientCard.query.get(request.json['id'])
     patient_card.comment = request.json['comment']
@@ -30,7 +30,7 @@ def update_patient_card():
     return patient_card.to_dict()
 
 
-@patient_cards_route.route('/', methods=['POST'])
+@patient_cards_route.route('', methods=['POST'])
 def create_patient_card():
     patient_card = patientCard(
         userId=request.json['userId'],

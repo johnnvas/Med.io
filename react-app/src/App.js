@@ -12,7 +12,9 @@ import PatientCardPage from './components/SinglePTCard';
 import PatientCardForm from './components/PostPTCard'
 // import DiagnosisForm from './components/PostDiagnosis'
 import { authenticate } from './store/session';
+import Modal from 'react-modal'
 
+Modal.setAppElement("#root")
 function App() {
   const [loaded, setLoaded] = useState(false);
   const dispatch = useDispatch();

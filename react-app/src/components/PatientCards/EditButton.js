@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { getCARDSThunk, deleteCARDThunk } from '../../store/patientcard'
+import { deleteCARDThunk } from '../../store/patientcard'
 import './patientcards.css'
 import EditComment from "../EditComment";
 

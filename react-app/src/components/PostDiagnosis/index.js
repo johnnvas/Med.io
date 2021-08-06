@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./postdiagnosis.css";
-import { uploadDIAGNOSISThunk, getDIAGNOSISThunk } from "../../store/diagnosis";
+import { uploadDIAGNOSISThunk } from "../../store/diagnosis";
 import { useHistory, useParams } from "react-router-dom";
 import Modal from 'react-modal'
 
@@ -10,8 +10,6 @@ const DiagnosisForm = ({ showModal, setShowModal, onePatientCard}) => {
   const [comment, setComment] = useState("");
 
   const user = useSelector((state) => state.session.user);
-  const patientCard = useSelector((state) =>
-     Object.values(state.patientCards))[0];
 
   const dispatch = useDispatch();
   const { id } = useParams();

@@ -9,6 +9,7 @@ function EditDiagnosisButton({d}) {
   const [showEdit, setShowEdit] = useState(false);
   const dispatch = useDispatch();
 
+  console.log("SECOND DDDDDD", d)
 
   // const refresh = () => {
   //     dispatch(getCARDSThunk());

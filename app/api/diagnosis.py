@@ -15,7 +15,7 @@ def get_single_diagnosis(id):
 
 
 
-@diagnosis_route.route('/', methods=['PUT'])
+@diagnosis_route.route('', methods=['PUT'])
 def update_diagnosis():
     diagnosis = Diagnosis.query.get(request.json['id'])
     diagnosis.comment = request.json['comment']
@@ -37,10 +37,10 @@ def create_diagnosis():
     return diagnosis.to_dict()
 
 
-@diagnosis_route.route('/', methods=['DELETE'])
-def delete_diagnosis():
+@diagnosis_route.route('/<int:id>', methods=['DELETE'])
+def delete_diagnosis(id):
 
-    diagnosis = Diagnosis.query.get(request.json['id'])
+    diagnosis = Diagnosis.query.get(id)
 
     db.session.delete(diagnosis)
     db.session.commit()
