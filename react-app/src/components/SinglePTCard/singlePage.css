@@ -1,0 +1,21 @@
+.single-patientCard {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  border: 1px solid black;
+  margin: 30px;
+  top: 90px;
+
+}
+
+.ind-diagnosis{
+  margin: 10px;
+}
+
+.singlePT-holder{
+  margin: 10px;
+}
+
+.single-patientCard{
+  margin: 10px;
+}

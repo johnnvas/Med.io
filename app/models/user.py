@@ -7,9 +7,18 @@ class User(db.Model, UserMixin):
     __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(40), nullable=False, unique=True)
-    email = db.Column(db.String(255), nullable=False, unique=True)
+    firstName = db.Column(db.String(80), nullable=False)
+    lastName = db.Column(db.String(80), nullable=False)
+    imageUrl = db.Column(db.String(1000))
+    dob = db.Column(db.Date, nullable=False)
+    email = db.Column(db.String(225), unique=True, nullable=False)
+    doctor = db.Column(db.Boolean, nullable=False, default=False)
+    medicalconditions = db.Column(db.String(2000), nullable=False)
     hashed_password = db.Column(db.String(255), nullable=False)
+
+
+    userPatientCard = db.relationship('patientCard', back_populates='patientCardUser')
+
 
     @property
     def password(self):
@@ -25,6 +34,11 @@ class User(db.Model, UserMixin):
     def to_dict(self):
         return {
             'id': self.id,
-            'username': self.username,
-            'email': self.email
+            'firstName': self.firstName,
+            'lastName': self.lastName,
+            'email': self.email,
+            'dob': self.dob,
+            'doctor': self.doctor,
+            'medicalconditions': self.medicalconditions,
+
         }

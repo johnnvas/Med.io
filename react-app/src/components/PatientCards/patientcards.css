@@ -1,0 +1,26 @@
+.pc-container{
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  position: relative;
+  margin:30px;
+}
+
+#elipses {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../images/elipses.svg");
+  background-size: 20px;
+  background-repeat: no-repeat;
+  height: 30px;
+  width: 30px;
+  transition-duration: 0.4s;
+}
+
+.PatientCards{
+  position: relative;
+  top:140px;
+  background-color: white;
+  z-index: -9999999999999999999999;
+}
