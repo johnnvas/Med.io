@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { updateCARDThunk, getCARDSThunk } from "../../store/patientcard";
 import "./EditComment.css";
 
-function EditComment({ pc }) {
+function EditComment({ pc, showMenu, setShowMenu }) {
   const dispatch = useDispatch();
   const [comment, setComment] = useState('');
 
@@ -11,7 +11,8 @@ function EditComment({ pc }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateCARDThunk({ 'id': pc.id, 'comment': comment}))
+    dispatch(updateCARDThunk({ 'id': pc.id, 'comment': comment }))
+    setShowMenu(false);
   };
 
   const updateComment = (e) => {
@@ -38,7 +39,7 @@ function EditComment({ pc }) {
             className="edit-comment-input"
           />
         </label>
-        <button className="edit-btn" type="submit">
+        <button className="edit-comment-btn" type="submit">
           Update!
         </button>
       </form>

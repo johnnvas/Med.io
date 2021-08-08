@@ -10,7 +10,7 @@ import PatientCards from './components/PatientCards';
 import SplashPage from './components/SplashPage';
 import PatientCardPage from './components/SinglePTCard';
 import PatientCardForm from './components/PostPTCard'
-// import DiagnosisForm from './components/PostDiagnosis'
+import NotFoundPage from "./components/NotFoundPage";
 import { authenticate } from './store/session';
 import Modal from 'react-modal'
 
@@ -55,9 +55,7 @@ function App() {
         <ProtectedRoute path='/patientcards/:cardId' exact={true} >
           <PatientCardPage />
         </ProtectedRoute>
-        {/* <ProtectedRoute path='/patientcards/:cardId/diagnose' exact={true} >
-          <DiagnosisForm />
-        </ProtectedRoute> */}
+        <Route component={NotFoundPage} />
       </Switch>
     </BrowserRouter>
   );

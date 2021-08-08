@@ -45,7 +45,6 @@ const PatientCardForm = () => {
         'lowerbody': lowerbody,
         'userId': user.id,
         'comment': comment,
-        // 'doctorId': doctorId,
       })
     );
     dispatch(getCARDSThunk());
@@ -61,9 +60,9 @@ const PatientCardForm = () => {
       <div className="radio-field">
         {" "}
         <label>General Location: </label>
-        <input type="radio" value={upperbody} name="body" onChange={updateUpperBody}/> Upperbody
-        <input type="radio" value={lowerbody} name="body" onChange={updateLowerBody}/> LowerBody
-        <input type="radio" value="Other" name="body" onChange={ updateBoth}/> Both
+        <input type="radio" value={upperbody} name="body" onChange={updateUpperBody} required={true}/> Upperbody
+        <input type="radio" value={lowerbody} name="body" onChange={updateLowerBody} required={true}/> LowerBody
+        <input type="radio" value="Other" name="body" onChange={ updateBoth} required={true}/> Both
       </div>
       <div className="input-field">
         {" "}
@@ -78,7 +77,7 @@ const PatientCardForm = () => {
         />
         <br/>
       </div>
-        <button type="submit" className="modal-button2">
+        <button type="submit" className="ptcard-submit">
           Submit
         </button>
     </form>

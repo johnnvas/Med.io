@@ -1,0 +1,15 @@
+.notfoundpage-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+h1,
+h3 {
+font-family: 'Arvo',
+serif;
+  color: #000;
+  margin: 0, auto;
+}

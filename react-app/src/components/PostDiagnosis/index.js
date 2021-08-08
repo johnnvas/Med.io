@@ -27,8 +27,6 @@ const DiagnosisForm = ({ showModal, setShowModal, pc}) => {
       }),
       setShowModal(false)
     );
-    // dispatch(getDIAGNOSISThunk());
-    // history.push(`/patientcards/${id}`);
   };
 
   return (
@@ -53,7 +51,7 @@ const DiagnosisForm = ({ showModal, setShowModal, pc}) => {
           />
           <br/>
         </div>
-          <button type="submit">
+          <button type="submit" className='diag-submit-btn'>
             Submit
           </button>
         </form>

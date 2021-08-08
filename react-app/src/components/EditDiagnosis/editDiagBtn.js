@@ -9,7 +9,6 @@ function EditDiagnosisButton({d}) {
   const [showEdit, setShowEdit] = useState(false);
   const dispatch = useDispatch();
 
-  console.log("SECOND DDDDDD", d)
 
   // const refresh = () => {
   //     dispatch(getCARDSThunk());
@@ -56,7 +55,7 @@ function EditDiagnosisButton({d}) {
   return (
     <div className="edit-menu">
       <button
-        className="edit-button"
+        className="edit-btn"
         id="elipses2"
         onClick={showMenu === true ? closeMenu : openMenu}
       ></button>
@@ -65,7 +64,7 @@ function EditDiagnosisButton({d}) {
         <div className="edit-dropdown">
           <button
             onClick={showEdit === true ? closeEdit : openEdit}
-            className="edit-btn editing-post"
+            className="edit22-btn editing-post"
             id="edit-btn"
           >
             Edit
@@ -79,7 +78,7 @@ function EditDiagnosisButton({d}) {
           >
             Delete
           </button>
-          {showEdit && <EditDiagnosis d={d} />}
+          {showEdit && <EditDiagnosis d={d} showMenu={showMenu} setShowMenu = { setShowMenu } />}
         </div>
       )}
     </div>)

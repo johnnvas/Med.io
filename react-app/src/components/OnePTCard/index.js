@@ -2,14 +2,14 @@ import EditButton from "../PatientCards/EditButton";
 import React from "react";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import './oneptcard.css';
 
 
 export default function OnePatientCard({ pc }) {
   const user = useSelector((state) => state.session.user);
 
-  console.log('PCCCCCC', pc);
-  
   return (
+
     <div className="pc-container">
       <div className="">
         <div className="PatientCard-name">

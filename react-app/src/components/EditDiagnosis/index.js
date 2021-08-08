@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { updateDIAGNOSISThunk, getDIAGNOSISThunk } from "../../store/diagnosis";
+import './edit.css'
 
 
-function EditDiagnosis({ d }) {
+function EditDiagnosis({ d, showMenu, setShowMenu }) {
 
   const dispatch = useDispatch();
   const [comment, setComment] = useState('');
-  console.log("THIS IS DDDDD ", d)
 
   const updateComment = (e) => {
     setComment(e.target.value);
@@ -15,13 +15,10 @@ function EditDiagnosis({ d }) {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateDIAGNOSISThunk({ 'id': d.id, 'comment': comment, 'doctorId': d.doctorId, 'patientCardId': d.patientCardId  }));
+    dispatch(updateDIAGNOSISThunk({ 'id': d.id, 'comment': comment, 'doctorId': d.doctorId, 'patientCardId': d.patientCardId }));
+    setShowMenu(false);
   };
 
-//   comment: "ayeeee"
-// doctorId: 1
-// id: 9
-// patientCardId: 2
 
   useEffect(() => {
     dispatch(getDIAGNOSISThunk())
@@ -43,7 +40,7 @@ function EditDiagnosis({ d }) {
             className="edit-comment-input"
           />
         </label>
-        <button className="edit-btn" type="submit">
+        <button className="edit-diagnosis-btn" type="submit">
           Update!
         </button>
       </form>

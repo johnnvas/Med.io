@@ -16,8 +16,6 @@ function PatientCardPage() {
   const pc = useSelector((state) => state.patientCards[cardId]);
   const diagnoses = useSelector((state) => Object.values(state.diagnosis));
 
-  console.log('PCCCCCCCCCC', pc)
-
   const user = useSelector((state) => state.session.user);
 
   useEffect(() => {
