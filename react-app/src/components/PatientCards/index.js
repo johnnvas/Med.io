@@ -40,11 +40,15 @@ function PatientCards() {
         <h2>Your Patient Cards: </h2>
         <div className='big-container'>
           {allPatientCards &&
-            allPatientCards?.map((pc) => {
-              if (pc.userId === user.id) {
-                return < OnePatientCard key={pc.id} pc={pc} />
-              }
-            })}
+            allPatientCards?.map((pc) => (
+            <div key={pc.id}>
+              {pc?.userId === user?.id && (
+                <OnePatientCard pc={pc} />
+                )
+                }
+              </div>
+            ))}
+
           </div>
       </div>
     );

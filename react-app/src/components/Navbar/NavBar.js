@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { NavLink, Link} from 'react-router-dom';
 import { useSelector } from "react-redux";
@@ -7,27 +6,12 @@ import './navbar.css'
 
 const NavBar = () => {
   const user = useSelector((state) => state.session.user);
-  
+
 
   let sessionLinks;
   if (user) {
     sessionLinks = (
       <>
-        {/* <li>
-          <NavLink to='/' exact={true} activeClassName='active'>
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
-            Login
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to='/sign-up' exact={true} activeClassName='active'>
-            Sign Up
-          </NavLink>
-        </li> */}
         <li>
           <div className='navNewPT'>
             <NavLink to='/newpatientcard' exact={true}

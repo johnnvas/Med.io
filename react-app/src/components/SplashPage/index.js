@@ -7,7 +7,6 @@ import { login } from "../../store/session";
 
 function SplashPage() {
   const [showModal, setShowModal] = useState(false);
-  const [errors, setErrors] = useState([]);
   const dispatch = useDispatch();
 
    const demoUser = async (e) => {
@@ -25,7 +24,7 @@ function SplashPage() {
       </div>
       <div className='intro-box'>
         <h1>Welcome to <span className='coloredWord'>Med</span><span className='secondWord'>.io</span>!</h1>
-        <h3> Where we specialize in closing the communication gap between doctors and patients </h3>
+        <h3> Where we specialize in closing the communication gap between doctors and patients.</h3>
       <div>
         <button className='sign-up-modal-btn' onClick={() => setShowModal(true)}>
           Sign Up

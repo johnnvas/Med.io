@@ -5,7 +5,7 @@ import './singlePage.css'
 
 function DiagnosisComponent({d}) {
   const user = useSelector((state) => state.session.user);
-  console.log('THIS IS DDDDD',d)
+
 
   return (
     <div className="diagnose-comp-container">

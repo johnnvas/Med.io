@@ -11,6 +11,7 @@ import SplashPage from './components/SplashPage';
 import PatientCardPage from './components/SinglePTCard';
 import PatientCardForm from './components/PostPTCard'
 import NotFoundPage from "./components/NotFoundPage";
+import Footer from './components/Footer'
 import { authenticate } from './store/session';
 import Modal from 'react-modal'
 
@@ -57,6 +58,7 @@ function App() {
         </ProtectedRoute>
         <Route component={NotFoundPage} />
       </Switch>
+      <Footer/>
     </BrowserRouter>
   );
 }
