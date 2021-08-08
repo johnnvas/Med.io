@@ -7,6 +7,7 @@ import './navbar.css'
 
 const NavBar = () => {
   const user = useSelector((state) => state.session.user);
+  
 
   let sessionLinks;
   if (user) {

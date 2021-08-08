@@ -8,7 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import Modal from 'react-modal'
 import './signupform.css'
 
-const SignUpForm = ({showModal, setShowModal}) => {
+const SignUpForm = ({ showModal, setShowModal }) => {
   const user = useSelector(state => state.session.user);
 
   const [errors, setErrors] = useState([]);
@@ -24,14 +24,15 @@ const SignUpForm = ({showModal, setShowModal}) => {
 
   const onSignUp = async (e) => {
     e.preventDefault();
-    if (password === repeatPassword) {
-      // dob=dob.toDateString();
+    if (password !== repeatPassword) {
+      setErrors(['Passwords do not match'])
+    } else {
       const data = await dispatch(signUp(firstName, email, password, lastName, medicalconditions, dob, doctor));
       if (data) {
         setErrors(data)
       }
+      setShowModal(false)
     }
-    setShowModal(false)
   };
 
 
@@ -85,8 +86,20 @@ const SignUpForm = ({showModal, setShowModal}) => {
     return <Redirect to='/patientcards' />;
   }
 
+  const customModalStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+    },
+  };
+
   return (
     <Modal
+      styles={customModalStyles}
       isOpen={showModal}
       onRequestClose={() => setShowModal(false)}
     >
@@ -101,7 +114,6 @@ const SignUpForm = ({showModal, setShowModal}) => {
           <input
             type='checkbox'
             name='firstName'
-            // onChange={updateDoctor}
             onClick={ hideDiv}
             value={doctor}
           ></input>

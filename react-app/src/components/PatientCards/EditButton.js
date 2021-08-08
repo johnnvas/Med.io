@@ -63,13 +63,13 @@ function EditButton({ pc }) {
         <div className="edit-dropdown">
           <button
             onClick={showEdit === true ? closeEdit : openEdit}
-            className="edit-btn editing-post"
+            className="edit33-btn editing-post"
             id="edit-btn"
           >
             Edit
           </button>
           <button
-            className="delete-btn edit-btn"
+            className="delete-btn "
             onClick={() => {
 
               dispatch(deleteCARDThunk(pc.id ))
@@ -77,7 +77,7 @@ function EditButton({ pc }) {
           >
             Delete
           </button>
-          {showEdit && <EditComment pc={pc} />}
+          {showEdit && <EditComment pc={pc} showMenu={showMenu} setShowMenu={setShowMenu} />}
         </div>
       )}
     </div>)
