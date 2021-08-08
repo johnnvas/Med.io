@@ -4,8 +4,16 @@ Med.io is a site where people go to interact with healthcare professionals. Pati
 
 # Med.io Landing Page
 
-![image])(https://github.com/johnnvas/Med.io/blob/main/homepage-image.JPG) 
+![image](https://github.com/johnnvas/Med.io/blob/main/homepage-image.JPG) 
 
 
-# Patient Cards
+# Patient Cards Feed
+![image](https://github.com/johnnvas/Med.io/blob/main/feed-image.JPG)
+
+# New Patient Card
+![image](https://github.com/johnnvas/Med.io/blob/main/new-ptcard-image.JPG)
+
+# Doctor Feed
+![image](https://github.com/johnnvas/Med.io/blob/main/doctor-feed-image.JPG)
+
 
