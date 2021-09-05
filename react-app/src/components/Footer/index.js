@@ -1,9 +1,7 @@
 import './footer.css'
 import React from 'react';
-import { useSelector } from "react-redux";
 
 const Footer = () => {
-  const user = useSelector((state) => state.session.user);
 
   return (
     <nav className="Footer">
