@@ -1,3 +1,6 @@
+input{
+  margin: 10px;
+}
 .radio-field{
   margin: 10px;
 }
@@ -6,9 +9,10 @@
   display: flex;
 }
 
-input{
-  margin: 10px;
+.listBox{
+  height: 30px;
 }
+
 
 .input-fieldApi{
   position: fixed;

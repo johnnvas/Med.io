@@ -40,7 +40,7 @@ export default function ApiConditions({ con, upperbody, lowerbody }) {
 
   return (
     <div className="bigApiDiv">
-      <div>
+      <div className='listBox'>
         <div className="listItems">
           {conditions &&
             conditions?.map((condi, i) => (
