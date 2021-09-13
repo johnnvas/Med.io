@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import "./ptcardform.css";
-import { uploadCARDThunk, getCARDSThunk } from "../../store/patientcard";
 import { useHistory } from "react-router-dom";
 // import {autocomplete} from 'autocomplete';
 import ApiConditions from "../ApiConditions";
@@ -11,17 +10,11 @@ import axios from 'axios';
 
 
 const PatientCardForm = () => {
-  const history = useHistory();
   const [data, setData] = useState(null);
-  const [commData, setCommData] = useState([]);
   const [medCon, setMedCon] = useState('');
   const [upperbody, setUpperBody] = useState("");
   const [lowerbody, setLowerBody] = useState("");
-  const [comment, setComment] = useState("");
 
-
-  const user = useSelector((state) => state.session.user);
-  const dispatch = useDispatch();
 
 
   const updateUpperBody = (e) => {
@@ -38,26 +31,6 @@ const PatientCardForm = () => {
     setUpperBody('yes');
     setLowerBody('yes');
   }
-
-  const updateComment = (e) => {
-    setComment(e.target.value);
-  }
-
-
-
-  // const onSubmit = (e) => {
-  //   e.preventDefault();
-  //   dispatch(
-  //     uploadCARDThunk({
-  //       'upperbody': upperbody,
-  //       'lowerbody': lowerbody,
-  //       'userId': user.id,
-  //       'comment': comment,
-  //     })
-  //   );
-  //   dispatch(getCARDSThunk());
-  //   history.push("/patientcards");
-  // };
 
 
   const getMedicalConditions = async () => {
@@ -86,6 +59,7 @@ const PatientCardForm = () => {
             <ApiConditions con={data} upperbody={upperbody} lowerbody={lowerbody}  />
           }
         </div>
+
     </div>
   );
 };

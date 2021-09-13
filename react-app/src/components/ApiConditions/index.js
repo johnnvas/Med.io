@@ -5,32 +5,35 @@ import { useSelector, useDispatch } from "react-redux";
 import "../PostPTCard/ptcardform.css";
 
 export default function ApiConditions({ con, upperbody, lowerbody }) {
-  const [commData, setCommData] = useState([]);
+  const [comment, setCommData] = useState('');
   const history = useHistory();
-  const [comment, setComment] = useState("");
-  const user = useSelector((state) => state.session.user);
+  const [cmt, setCmt] = useState("");
+  const userId = useSelector((state) => state.session.user).id;
   const dispatch = useDispatch();
   const conditions = con[3];
 
+
   const updateComment = (e) => {
-    setComment(e.target.value);
+    setCmt(e.target.value);
   };
 
 
   const populateComment = (e) => {
-    setCommData((commData) => [...commData, " " + e[0]]);
+    setCommData((comment) => comment += e + ", ");
+    console.log('This is EEEEEE',e)
+    console.log('This is COMDDDD',comment)
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(
-      uploadCARDThunk({
-        upperbody: upperbody,
-        lowerbody: lowerbody,
-        userId: user.id,
-        comment: commData,
-      })
+      uploadCARDThunk(
+       { upperbody,
+        lowerbody,
+        comment,}
+      )
     );
+
     dispatch(getCARDSThunk());
     history.push("/patientcards");
   };
@@ -41,15 +44,15 @@ export default function ApiConditions({ con, upperbody, lowerbody }) {
         <div className="listItems">
           {conditions &&
             conditions?.map((condi, i) => (
-              <>
-                <li key={condi[i]}> {condi} </li>
+              <div key={condi[i]}>
+                <li> {condi} </li>
                 <button
                   className="addBtn"
                   onClick={() => populateComment(condi)}
                 >
                   Add
                 </button>
-              </>
+              </div>
             ))}
         </div>
       </div>
@@ -60,11 +63,11 @@ export default function ApiConditions({ con, upperbody, lowerbody }) {
           <textarea
             name="Comment"
             rows={6}
-            cols={60}
+            cols={40}
             id="textarea"
             type="text"
             placeholder="Any additional comments?"
-            value={commData}
+            value={comment}
             onChange={updateComment}
             required={true}
           />

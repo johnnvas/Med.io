@@ -5,7 +5,7 @@ import "./EditComment.css";
 
 function EditComment({ pc, showMenu, setShowMenu }) {
   const dispatch = useDispatch();
-  const [comment, setComment] = useState('');
+  const [comment, setComment] = useState(pc.comment);
 
 
 
@@ -16,7 +16,8 @@ function EditComment({ pc, showMenu, setShowMenu }) {
   };
 
   const updateComment = (e) => {
-    setComment(e.target.value);
+    console.log('HERE IS PCCOMMEBTTTT', (pc.comment));
+    setComment(e);
   }
 
   useEffect(() => {
@@ -29,13 +30,13 @@ function EditComment({ pc, showMenu, setShowMenu }) {
          <label className="edit-comment"></label>
         <label>
           <textarea
-            placeholder="Edit Comment"
+            // placeholder={ pc.comment}
             type="text"
             value={comment}
-            onChange={updateComment}
+            onChange={(e)=> updateComment(e.target.value)}
             required
-            rows="2"
-            cols="10"
+            rows="3"
+            cols="15"
             className="edit-comment-input"
           />
         </label>

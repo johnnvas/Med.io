@@ -7,6 +7,7 @@ import './oneptcard.css';
 
 export default function OnePatientCard({ pc }) {
   const user = useSelector((state) => state.session.user);
+  // console.log("PCCCCCCCCCCCCC BS", pc.comment)
 
   return (
 

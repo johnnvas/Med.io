@@ -20,14 +20,20 @@ export const deleteCARD = (id) => ({
 //CREATE
 export const uploadCARDThunk = (payload) => async (dispatch) => {
 
-  const res = await fetch("/api/patient_cards", {
+  const res = await fetch("/api/patient_cards/create", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(payload),
   });
+  console.log('PAYLOAD', payload)
+  console.log('TYPEOFFFF', typeof(payload))
+  console.log('RESSSSS', res)
+
   const newCard = await res.json();
+
+  console.log("NEWCARD", typeof(newCard));
   dispatch(uploadCARD(newCard));
 };
 

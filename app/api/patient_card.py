@@ -1,5 +1,6 @@
 from app.models import db, patientCard
 from flask import Blueprint, request
+from flask_login import current_user
 
 patient_cards_route = Blueprint('patient_cards_route', __name__)
 
@@ -30,15 +31,17 @@ def update_patient_card():
     return patient_card.to_dict()
 
 
-@patient_cards_route.route('', methods=['POST'])
+@patient_cards_route.route('/create', methods=['POST'])
 def create_patient_card():
+    req = request.get_json()
+    print('HHHHHHHHHHHHHHHHHEEEEEEEEEEEEEEEEEEEEEEEEEEYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY', type(req))
     patient_card = patientCard(
-        userId=request.json['userId'],
+        userId=current_user.id,
         # doctorId=request.json['doctorId'],
         # diagnosis=request.json['diagnosis'],
-        upperbody=request.json['upperbody'],
-        lowerbody=request.json['lowerbody'],
-        comment=request.json['comment'])
+        upperbody=req['upperbody'],
+        lowerbody=req['lowerbody'],
+        comment=req['comment'])
 
     db.session.add(patient_card)
     db.session.commit()
@@ -47,11 +50,9 @@ def create_patient_card():
 
 @patient_cards_route.route('/<int:id>', methods=['DELETE'])
 def delete_patient_card(id):
-    print('THIS IS THE ID!!!!!!!!!!!!!!', id)
 
     patient_card = patientCard.query.get(id)
 
-    print('THIS IS THE PATIENTCARD!!!!!!!!!!!!!!', patient_card)
     db.session.delete(patient_card)
     db.session.commit()
     return {'id':id}
