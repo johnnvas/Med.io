@@ -51,7 +51,7 @@ const PatientCardForm = () => {
         <input type="radio" value={upperbody} name="body" onChange={updateUpperBody} required={true}/> Upperbody
         <input type="radio" value={lowerbody} name="body" onChange={updateLowerBody} required={true}/> LowerBody
         <input type="radio" value="Other" name="body" onChange={ updateBoth} required={true}/> Both
-        <input type="text" id="condition" placeholder="Condition" onChange={e => setMedCon(e.target.value)} />
+        <input type="text" id="condition" placeholder="KEY WORD" onChange={e => setMedCon(e.target.value)} />
         <button type="submit" className="" onClick={getMedicalConditions}>Search</button>
       </div>
         <div className='conditionsDiv'>

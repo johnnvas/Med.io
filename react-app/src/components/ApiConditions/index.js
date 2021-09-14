@@ -62,11 +62,10 @@ export default function ApiConditions({ con, upperbody, lowerbody }) {
           {" "}
           <textarea
             name="Comment"
-            rows={6}
-            cols={40}
+            rows={4}
+            cols={35}
             id="textarea"
             type="text"
-            placeholder="Any additional comments?"
             value={comment}
             onChange={updateComment}
             required={true}
