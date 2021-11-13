@@ -34,7 +34,6 @@ def update_patient_card():
 @patient_cards_route.route('/create', methods=['POST'])
 def create_patient_card():
     req = request.get_json()
-    print('HHHHHHHHHHHHHHHHHEEEEEEEEEEEEEEEEEEEEEEEEEEYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY', type(req))
     patient_card = patientCard(
         userId=current_user.id,
         # doctorId=request.json['doctorId'],
